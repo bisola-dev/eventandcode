@@ -12,7 +12,7 @@
                     <h3 class="text-lg font-medium mb-4">Eventandcode Admin Dashboard</h3>
                     <div class="space-y-4">
                         @if(auth()->user() && (auth()->user()->role === 'admin' || auth()->user()->role === 'superadmin'))
-                        <a href="{{ route('events.index') }}" class="block p-4 rounded text-center font-bold text-xl shadow-lg" style="background: linear-gradient(135deg, #8B5CF6, #F59E0B); color: white;">
+                        <a href="{{ route('events.index') }}" class="block p-4 rounded text-center font-bold text-xl shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
                             Manage Events
                         </a>
 
@@ -22,7 +22,7 @@
                         </a>
                         @endif
                         @else
-                        <a href="{{ route('events.index') }}" class="block p-4 rounded text-center font-bold text-xl shadow-lg" style="background: linear-gradient(135deg, #8B5CF6, #F59E0B); color: white;">
+                        <a href="{{ route('events.index') }}" class="block p-4 rounded text-center font-bold text-xl shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
                             My Events
                         </a>
                         @endif
