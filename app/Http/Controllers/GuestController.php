@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Guest;
 use App\Services\QrCodeService;
 use App\Services\WhatsAppService;
+use App\Services\PhpMailerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -89,7 +90,9 @@ class GuestController extends Controller
                 ]);
 
                 // Send enhanced QR code email
-                Mail::to($guest->email)->send(new SendQrCode($guest));
+                $phpMailerService = new PhpMailerService();
+                $result = $phpMailerService->sendQrCodeEmail($guest);
+                // Optionally log result: $result['success'] ? 'Email sent' : $result['message']
             }
         } else {
             // Single guest (backward compatibility)
@@ -116,7 +119,9 @@ class GuestController extends Controller
             ]);
 
             // Send enhanced QR code email
-            Mail::to($guest->email)->send(new SendQrCode($guest));
+            $phpMailerService = new PhpMailerService();
+            $result = $phpMailerService->sendQrCodeEmail($guest);
+            // Optionally log result: $result['success'] ? 'Email sent' : $result['message']
         }
 
         return redirect()->route('guests.index', ['event' => $eventId])->with('success', 'Guests added successfully.');
@@ -286,7 +291,9 @@ class GuestController extends Controller
                     }
 
                     // Send enhanced QR code email
-                    Mail::to($guest->email)->send(new SendQrCode($guest));
+                    $phpMailerService = new PhpMailerService();
+                    $result = $phpMailerService->sendQrCodeEmail($guest);
+                    // Optionally log result: $result['success'] ? 'Email sent' : $result['message']
                 }
             } catch (\Exception $e) {
                 $errors[] = "Row " . ($index + 1) . ": " . $e->getMessage();
@@ -490,13 +497,21 @@ class GuestController extends Controller
         }
 
         try {
-            // Send the QR code email
-            Mail::to($guest->email)->send(new SendQrCode($guest));
+            // Send the QR code email using PHPMailer
+            $phpMailerService = new PhpMailerService();
+            $result = $phpMailerService->sendQrCodeEmail($guest);
 
-            return response()->json([
-                'success' => true,
-                'message' => 'QR code email sent successfully to ' . $guest->email
-            ]);
+            if ($result['success']) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'QR code email sent successfully to ' . $guest->email
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Failed to send email: ' . $result['message']
+                ], 500);
+            }
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
