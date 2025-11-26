@@ -74,46 +74,46 @@
 
                                                 <div class="grid grid-cols-2 gap-4 mb-6">
                                                     <!-- Preview Email -->
-                                                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 hover:shadow-lg transition-all duration-200 cursor-pointer" onclick="window.open('/test-email/{{ $guest->id }}', '_blank')">
+                                                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 hover:shadow-lg hover:border-blue-300 hover:bg-gradient-to-br hover:from-blue-100 hover:to-blue-200 transition-all duration-200 cursor-pointer group active:scale-95 active:transition-transform active:duration-75 hover:cursor-pointer" onclick="window.open('/test-email/{{ $guest->id }}', '_blank')">
                                                         <div class="flex flex-col items-center text-center">
-                                                            <div class="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center mb-3 shadow-md">
-                                                                <span class="text-xl">👁️</span>
+                                                            <div class="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center mb-3 shadow-md group-hover:bg-blue-600 group-hover:shadow-lg group-active:bg-blue-700 transition-all duration-200">
+                                                                <span class="text-xl group-hover:scale-110 group-active:scale-95 transition-transform duration-200">👁️</span>
                                                             </div>
-                                                            <span class="font-semibold text-blue-800 text-sm">Preview Email</span>
-                                                            <span class="text-xs text-blue-600 mt-1">See how it looks</span>
+                                                            <span class="font-semibold text-blue-800 text-sm group-hover:text-blue-900 group-active:text-blue-950 transition-colors duration-200">Preview Email</span>
+                                                            <span class="text-xs text-blue-600 mt-1 group-hover:text-blue-700 group-active:text-blue-800 transition-colors duration-200">See how it looks</span>
                                                         </div>
                                                     </div>
 
                                                     <!-- Send Email -->
-                                                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4 hover:shadow-lg transition-all duration-200 cursor-pointer" onclick="sendQrEmail({{ $guest->id }}, '{{ $guest->name }}', '{{ $guest->email }}')">
+                                                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4 hover:shadow-lg hover:border-purple-300 hover:bg-gradient-to-br hover:from-purple-100 hover:to-purple-200 transition-all duration-200 cursor-pointer group active:scale-95 active:transition-transform active:duration-75 hover:cursor-pointer" onclick="sendQrEmail({{ $guest->id }}, '{{ $guest->name }}', '{{ $guest->email }}')">
                                                         <div class="flex flex-col items-center text-center">
-                                                            <div class="bg-purple-500 text-white rounded-full w-12 h-12 flex items-center justify-center mb-3 shadow-md">
-                                                                <span class="text-xl">📧</span>
+                                                            <div class="bg-purple-500 text-white rounded-full w-12 h-12 flex items-center justify-center mb-3 shadow-md group-hover:bg-purple-600 group-hover:shadow-lg group-active:bg-purple-700 transition-all duration-200">
+                                                                <span class="text-xl group-hover:scale-110 group-active:scale-95 transition-transform duration-200">📧</span>
                                                             </div>
-                                                            <span class="font-semibold text-purple-800 text-sm">Send Email</span>
-                                                            <span class="text-xs text-purple-600 mt-1">Direct to inbox</span>
+                                                            <span class="font-semibold text-purple-800 text-sm group-hover:text-purple-900 group-active:text-purple-950 transition-colors duration-200">Send Email</span>
+                                                            <span class="text-xs text-purple-600 mt-1 group-hover:text-purple-700 group-active:text-purple-800 transition-colors duration-200">Direct to inbox</span>
                                                         </div>
                                                     </div>
 
                                                     <!-- WhatsApp -->
-                                                    <div class="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-4 hover:shadow-lg transition-all duration-200 cursor-pointer" onclick="sendWhatsAppInvite({{ $guest->id }}, '{{ $guest->name }}')">
+                                                    <div class="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-4 hover:shadow-lg hover:border-green-300 hover:bg-gradient-to-br hover:from-green-100 hover:to-green-200 transition-all duration-200 cursor-pointer group active:scale-95 active:transition-transform active:duration-75 hover:cursor-pointer" onclick="sendWhatsAppInvite({{ $guest->id }}, '{{ $guest->name }}')">
                                                         <div class="flex flex-col items-center text-center">
-                                                            <div class="bg-green-500 text-white rounded-full w-12 h-12 flex items-center justify-center mb-3 shadow-md">
-                                                                <span class="text-xl">💬</span>
+                                                            <div class="bg-green-500 text-white rounded-full w-12 h-12 flex items-center justify-center mb-3 shadow-md group-hover:bg-green-600 group-hover:shadow-lg group-active:bg-green-700 transition-all duration-200">
+                                                                <span class="text-xl group-hover:scale-110 group-active:scale-95 transition-transform duration-200">💬</span>
                                                             </div>
-                                                            <span class="font-semibold text-green-800 text-sm">WhatsApp</span>
-                                                            <span class="text-xs text-green-600 mt-1">WhatsApp only</span>
+                                                            <span class="font-semibold text-green-800 text-sm group-hover:text-green-900 group-active:text-green-950 transition-colors duration-200">Send QR Image</span>
+                                                            <span class="text-xs text-green-600 mt-1 group-hover:text-green-700 group-active:text-green-800 transition-colors duration-200">Direct to WhatsApp</span>
                                                         </div>
                                                     </div>
 
                                                     <!-- Test Link -->
-                                                    <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 border border-cyan-200 rounded-xl p-4 hover:shadow-lg transition-all duration-200 cursor-pointer" onclick="testWhatsApp('{{ $guest->phone }}', '{{ $guest->name }}')">
+                                                    <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 border border-cyan-200 rounded-xl p-4 hover:shadow-lg hover:border-cyan-300 hover:bg-gradient-to-br hover:from-cyan-100 hover:to-cyan-200 transition-all duration-200 cursor-pointer group active:scale-95 active:transition-transform active:duration-75 hover:cursor-pointer" onclick="testWhatsApp('{{ $guest->phone }}', '{{ $guest->name }}')">
                                                         <div class="flex flex-col items-center text-center">
-                                                            <div class="bg-cyan-500 text-white rounded-full w-12 h-12 flex items-center justify-center mb-3 shadow-md">
-                                                                <span class="text-xl">🔗</span>
+                                                            <div class="bg-cyan-500 text-white rounded-full w-12 h-12 flex items-center justify-center mb-3 shadow-md group-hover:bg-cyan-600 group-hover:shadow-lg group-active:bg-cyan-700 transition-all duration-200">
+                                                                <span class="text-xl group-hover:scale-110 group-active:scale-95 transition-transform duration-200">🔗</span>
                                                             </div>
-                                                            <span class="font-semibold text-cyan-800 text-sm">Test Link</span>
-                                                            <span class="text-xs text-cyan-600 mt-1">Verify number</span>
+                                                            <span class="font-semibold text-cyan-800 text-sm group-hover:text-cyan-900 group-active:text-cyan-950 transition-colors duration-200">Test Link</span>
+                                                            <span class="text-xs text-cyan-600 mt-1 group-hover:text-cyan-700 group-active:text-cyan-800 transition-colors duration-200">Verify number</span>
                                                         </div>
                                                     </div>
                                                 </div>

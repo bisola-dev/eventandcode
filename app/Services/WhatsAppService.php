@@ -49,6 +49,13 @@ class WhatsAppService
             $message = $this->createInviteMessage($guest);
             $phone = $this->formatPhoneNumber($guest->phone);
 
+            // Check if QR code file exists
+            $qrCodePath = storage_path('app/public/qr_codes/' . $guest->qr_code . '.png');
+            if (!file_exists($qrCodePath)) {
+                \Log::error('QR code file does not exist: ' . $qrCodePath);
+                return false;
+            }
+
             // Send message with QR code as media
             $twilio->messages->create(
                 'whatsapp:' . $phone,
@@ -116,7 +123,7 @@ class WhatsAppService
 
         $message .= "📱 *Your QR Code:*\n";
         $message .= "👉 *VIEW QR CODE:* {$qrCodeUrl}\n\n";
-        $message .= "📷 *Scan this QR code at the event for check-in*\n\n";
+        $message .= "📱 *Scan this QR code at the event for check-in*\n\n";
         $message .= "💡 *Tip:* Save this QR code to your phone for easy access!\n\n";
         $message .= "💬 *Contact:* For questions, WhatsApp only: 08057516152\n\n";
         $message .= "See you there! 🎊";
